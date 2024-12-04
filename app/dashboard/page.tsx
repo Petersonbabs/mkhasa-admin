@@ -26,18 +26,18 @@ const Dashboard: React.FC = () => {
   const [deliveredOrderCount, setDeliveredOrderCount] = useState(0);
   const [inventoryOrderCount, setInventoryOrderCount] = useState(0);
 
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/login");
-    } else if (status === "authenticated") {
-      if (session?.user?._id) {
-        fetchDashboardData(session.user._id);
-      } else {
-        console.error("Session user ID is undefined");
-        setIsLoading(false); // Ensure loading state is turned off
-      }
-    }
-  }, [status, router, session]);
+  // useEffect(() => {
+  //   if (status === "unauthenticated") {
+  //     router.push("/login");
+  //   } else if (status === "authenticated") {
+  //     if (session?.user?._id) {
+  //       fetchDashboardData(session.user._id);
+  //     } else {
+  //       console.error("Session user ID is undefined");
+  //       setIsLoading(false); // Ensure loading state is turned off
+  //     }
+  //   }
+  // }, [status, router, session]);
 
   const fetchDashboardData = async (adminId: string) => {
     setIsLoading(true);
@@ -90,4 +90,4 @@ const Dashboard: React.FC = () => {
   );
 };
 
-export default withAuth(Dashboard);
+export default Dashboard;

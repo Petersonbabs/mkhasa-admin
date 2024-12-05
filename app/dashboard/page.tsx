@@ -20,24 +20,24 @@ const LoadingSpinner = () => (
 const Dashboard: React.FC = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [pendingOrderCount, setPendingOrderCount] = useState(0);
   const [dispatchedOrderCount, setDispatchedOrderCount] = useState(0);
   const [deliveredOrderCount, setDeliveredOrderCount] = useState(0);
   const [inventoryOrderCount, setInventoryOrderCount] = useState(0);
 
-  // useEffect(() => {
-  //   if (status === "unauthenticated") {
-  //     router.push("/login");
-  //   } else if (status === "authenticated") {
-  //     if (session?.user?._id) {
-  //       fetchDashboardData(session.user._id);
-  //     } else {
-  //       console.error("Session user ID is undefined");
-  //       setIsLoading(false); // Ensure loading state is turned off
-  //     }
-  //   }
-  // }, [status, router, session]);
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/login");
+    } else if (status === "authenticated") {
+      if (session?.user?._id) {
+        fetchDashboardData(session.user._id);
+      } else {
+        console.error("Session user ID is undefined");
+        setIsLoading(false); // Ensure loading state is turned off
+      }
+    }
+  }, [status, router, session]);
 
   const fetchDashboardData = async (adminId: string) => {
     setIsLoading(true);

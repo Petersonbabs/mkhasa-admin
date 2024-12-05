@@ -22,16 +22,18 @@ const authOptions: NextAuthOptions = {
       name: 'Credentials',
       credentials: {
         email: { label: "Email", type: "text" },
-        password: {  label: "Password", type: "password" }
+        password: { label: "Password", type: "password" }
       },
       async authorize(credentials, req) {
-        if (typeof credentials !== "undefined") {
+        
+        if (credentials) {
           try {
+
             const res = await axios.post(`${process.env.BASE_URL}/admin/login`, {
               email: credentials.email,
               password: credentials.password
             })
-            
+
             if (res.data) {
               // Cast the return value to ExtendedUser
               return {
@@ -73,6 +75,7 @@ const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/login',
   },
+  debug: true
 }
 
 const handler = NextAuth(authOptions)

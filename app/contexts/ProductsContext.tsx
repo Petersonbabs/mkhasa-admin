@@ -132,8 +132,6 @@ const ProductProvider = ({ children }: { children: ReactNode }) => {
         try {
             const response = await fetch(`https://mkhasa-bfdb6fabd978.herokuapp.com/api/v1/product/${id}`);
             const data = await response.json();
-            console.log(data);
-            
             return data
         } catch (error) {
             console.error("Error at fetch single product:", error);

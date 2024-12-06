@@ -8,6 +8,7 @@ interface DashboardLayoutProps {
     children: ReactNode;
 }
 
+
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
     const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 

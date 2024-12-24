@@ -31,16 +31,16 @@ const SearchHistory = () => {
     
         const date = new Date(timestamp);
     
-        const options = {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-            timeZoneName: 'short'
-        };
+        // const options = {
+        //     weekday: 'long',
+        //     year: 'numeric',
+        //     month: 'long',
+        //     day: 'numeric',
+        //     hour: '2-digit',
+        //     minute: '2-digit',
+        //     second: '2-digit',
+        //     timeZoneName: 'short'
+        // };
     
         // Display in local time
         const formattedDate = date.toLocaleString('en-US', {weekday: 'short', day: 'numeric', month: 'short'});
@@ -68,7 +68,7 @@ const SearchHistory = () => {
                         <TableBody>
                             {
                                 searchHistory?.slice(0, 20).map((item, index) => (
-                                    <TableRow>
+                                    <TableRow key={index}>
                                         <TableCell>{index + 1}</TableCell>
                                         <TableCell>{item?.name}</TableCell>
                                         <TableCell>{formatDate(item?.timestamp)}</TableCell>

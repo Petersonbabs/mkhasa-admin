@@ -79,14 +79,12 @@ const SimilarProducts = () => {
         const product = await fetchProductById(productId)
         
         const similar = product?.similar
-        console.log(similar);
         setSimilarProducts(similar as any)
         setPrimaryProduct(product as any)
     };
 
     const handleSaveAndContinue = async (productId: string) => {
         setLoading(true);
-
         const similarProductsIds = similarProducts.filter(item => item._id).map(item => item._id)
 
         try {
@@ -98,8 +96,6 @@ const SimilarProducts = () => {
                 body: JSON.stringify({ similar: similarProductsIds })
             });
             const data = await response.json()
-            console.log(data);
-            
             if (!response.ok) {throw new Error('Failed to update simiilar product')} else{toast.success('Similar products updated!')};
 
             // toast.success('frequently bought product updated successfully');

@@ -10,6 +10,7 @@ import DashboardMetric from "@/components/dashboardMetric";
 import EarningsChart from "@/components/earningChart";
 import TopSellingProductsTable from "@/components/topSellingTable";
 import withAuth from "@/components/withAuth";
+import SearchHistory from "@/components/SearchHistory";
 
 const LoadingSpinner = () => (
   <div className="flex justify-center items-center h-screen">
@@ -85,6 +86,7 @@ const Dashboard: React.FC = () => {
       <div className="mb-20">
         <EarningsChart />
       </div>
+      <SearchHistory />
       <TopSellingProductsTable />
     </Wrapper>
   );

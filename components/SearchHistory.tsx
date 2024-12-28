@@ -55,7 +55,7 @@ const SearchHistory = () => {
 
     return (
         <div>
-            <h1>Search History</h1>
+            <h1 className="text-2xl font-bold">Search History</h1>
             {
                 searchHistory ?
                     <Table>
